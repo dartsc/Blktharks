@@ -39,17 +39,20 @@ setTimeout(() => {
                 padding: 0px 0px;
             `;
 
-            blobFrame = document.createElement("iframe");
-            blobFrame.setAttribute("tabindex", "0");
-            blobFrame.style.cssText = `
-                width: 100%;
-                height: calc(100% - 40px);
-                border: none;
-                position: absolute;
-                top: 40px;
-                display: block;
-                user-select: none;
-            `;
+blobFrame = document.createElement("iframe");
+blobFrame.setAttribute("tabindex", "0");
+blobFrame.style.cssText = `
+    width: 100%;
+    height: calc(100% - 40px);
+    border: none;
+    position: absolute;
+    top: 40px;
+    display: block;
+    user-select: none;
+`;
+
+// Add iframe to the container BEFORE writing content
+blobFrameContainer.appendChild(blobFrame);
 
 // Instead of fetch(...).then(...)
 // just store main.html contents in a string:
@@ -520,11 +523,14 @@ const html = `
 
 `;
 
+
+			
 // Then write it to the iframe like before:
 const uBlobeHtml = blobFrame.contentDocument || blobFrame.contentWindow.document;
 uBlobeHtml.open();
 uBlobeHtml.write(html);
 uBlobeHtml.close();
+
 
 
             const bar = document.createElement("div");
