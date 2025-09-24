@@ -5,12 +5,12 @@ setTimeout(() => {
     fontFace.load().then((loadedFont) => {
       document.fonts.add(loadedFont);
     });
-    
+
     let blobFrame = null;
     let blobFrameContainer = null;
     let isOpening = false;
     let isClosing = false;
-    
+
     document.addEventListener("keydown", function (blob) {
         if (blob.code == "Backquote" && blob.ctrlKey && blob.shiftKey && !blobFrame && !isClosing) {
             isOpening = true;            
@@ -39,20 +39,17 @@ setTimeout(() => {
                 padding: 0px 0px;
             `;
 
-blobFrame = document.createElement("iframe");
-blobFrame.setAttribute("tabindex", "0");
-blobFrame.style.cssText = `
-    width: 100%;
-    height: calc(100% - 40px);
-    border: none;
-    position: absolute;
-    top: 40px;
-    display: block;
-    user-select: none;
-`;
-
-// Add iframe to the container BEFORE writing content
-blobFrameContainer.appendChild(blobFrame);
+            blobFrame = document.createElement("iframe");
+            blobFrame.setAttribute("tabindex", "0");
+            blobFrame.style.cssText = `
+                width: 100%;
+                height: calc(100% - 40px);
+                border: none;
+                position: absolute;
+                top: 40px;
+                display: block;
+                user-select: none;
+            `;
 
 // Instead of fetch(...).then(...)
 // just store main.html contents in a string:
@@ -523,14 +520,11 @@ const html = `
 
 `;
 
-
-			
 // Then write it to the iframe like before:
 const uBlobeHtml = blobFrame.contentDocument || blobFrame.contentWindow.document;
 uBlobeHtml.open();
 uBlobeHtml.write(html);
 uBlobeHtml.close();
-
 
 
             const bar = document.createElement("div");
@@ -609,18 +603,18 @@ uBlobeHtml.close();
                 blobFrameContainer.style.transform = "translate(-50%, -47%) translateY(0)";
                 blobFrame.focus();
             });
-            
+
             setTimeout(() => {
                 isOpening = false;
             }, 300);
-            
+
             window.addEventListener("message", handleMessage);
         }
     });
 
     let offsetX, offsetY;
     let isDragging = false;
-    
+
     function startDragging(e) {
         const rect = blobFrameContainer.getBoundingClientRect();
         offsetX = e.clientX - rect.left;
@@ -664,7 +658,7 @@ uBlobeHtml.close();
         if (message.data.toString().startsWith("run:")) {
             closeWithAnimation(blobFrameContainer);
             blobFrame = null;
-    
+
             setTimeout(() => {
                 try {
                     eval(decodeURIComponent(message.data.toString().replace("run:", "")));
@@ -704,7 +698,7 @@ uBlobeHtml.close();
                 for (const [encoded, decoded] of Object.entries(replacements)) {
                     messageData = messageData.replace(new RegExp(encoded, 'g'), decoded);
                 }
-    
+
                 try {
                     eval(messageData);
                 } catch (error) {
