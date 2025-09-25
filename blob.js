@@ -37,17 +37,84 @@ setTimeout(() => {
                 padding: 0px 0px;
             `;
 
-            blobFrame = document.createElement("iframe");
-            blobFrame.setAttribute("tabindex", "0");
-            blobFrame.style.cssText = `
-                width: 100%;
-                height: calc(100% - 40px);
-                border: none;
-                position: absolute;
-                top: 40px;
-                display: block;
-                user-select: none;
-            `;
+blobFrame = document.createElement("iframe");
+blobFrame.setAttribute("tabindex", "0");
+blobFrame.style.cssText = `
+    width: 100%;
+    height: calc(100% - 40px);
+    border: none;
+    position: absolute;
+    top: 40px;
+    display: block;
+    user-select: none;
+`;
+
+const bar = document.createElement("div");
+bar.style.cssText = `
+    width: 100%;
+    height: 40px;
+    background-color: #4CAF50;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    user-select: none;
+    cursor: move;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    border-radius: 0;
+`;
+
+const closeButton = document.createElement("button");
+closeButton.innerText = "×";
+closeButton.style.cssText = `
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 25px;
+    height: 30px;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-family: 'Varela Round', sans-serif;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+`;
+closeButton.addEventListener("mouseenter", function() {
+    closeButton.style.color = "#046908";
+});
+closeButton.addEventListener("mouseleave", function() {
+    closeButton.style.color = "#fff";
+});
+closeButton.addEventListener("click", closeIframe);
+
+const titleText = document.createElement("div");
+titleText.innerText = "uBlobeBM";
+titleText.style.cssText = `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
+    user-select: none;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    background-color: transparent;
+    text-align: center;
+`;
+
+bar.appendChild(titleText);
+bar.appendChild(closeButton);
+bar.addEventListener("mousedown", startDragging);
+
+blobFrameContainer.appendChild(blobFrame);
+blobFrameContainer.appendChild(bar);
+document.body.appendChild(blobFrameContainer);
 
 const html = `
 <!DOCTYPE html>
@@ -520,74 +587,6 @@ uBlobeHtml.open();
 uBlobeHtml.write(html);
 uBlobeHtml.close();
 
-            const bar = document.createElement("div");
-            bar.style.cssText = `
-                width: 100%;
-                height: 40px;
-                background-color: #4CAF50;
-                position: relative;
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
-                user-select: none;
-                cursor: move;
-                margin: 0px 0px;
-                padding: 0px 0px;
-                border-radius: 0;
-            `;
-
-            const closeButton = document.createElement("button");
-            closeButton.innerText = "×";
-            closeButton.style.cssText = `
-                position: absolute;
-                top: 50%;
-                right: 15px;
-                width: 25px;
-                height: 30px;
-                margin: 0px 0px;
-                padding: 0px 0px;
-                transform: translateY(-50%);
-                background: none;
-                border: none;
-                font-size: 20px;
-                font-family: 'Varela Round', sans-serif;
-                color: #fff;
-                cursor: pointer;
-                transition: color 0.3s ease;
-            `;
-            closeButton.addEventListener("mouseenter", function() {
-                closeButton.style.color = "#046908";
-            });
-            closeButton.addEventListener("mouseleave", function() {
-                closeButton.style.color = "#fff";
-            });
-            closeButton.addEventListener("click", closeIframe);
-
-            const titleText = document.createElement("div");
-            titleText.innerText = "uBlobeBM";
-            titleText.style.cssText = `
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: #fff;
-                font-size: 16px;
-                font-family: 'Varela Round', sans-serif;
-                user-select: none;
-                margin: 0px 0px;
-                padding: 0px 0px;
-                background-color: transparent;
-                text-align: center;
-            `;
-
-            bar.appendChild(titleText);
-            bar.appendChild(closeButton);
-
-            bar.addEventListener("mousedown", startDragging);
-
-            blobFrameContainer.appendChild(blobFrame);
-            blobFrameContainer.appendChild(bar);
-
-            document.body.appendChild(blobFrameContainer);
 
             blobFrameContainer.offsetHeight;
 
