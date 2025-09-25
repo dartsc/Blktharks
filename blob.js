@@ -3,7 +3,7 @@ function blob() {
 	document.addEventListener('DOMContentLoaded', function() {
         console.log("uBlobeBM Loaded");
 		setTimeout(() => {
-			const fontFace = new FontFace('Varela Round', '');
+			const fontFace = new FontFace('Varela Round', "local('Varela Round')");
 			fontFace.load().then((loadedFont) => {
 				document.fonts.add(loadedFont);
 			});
