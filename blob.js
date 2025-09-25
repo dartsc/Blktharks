@@ -582,8 +582,9 @@ function blob() {
                 			});
             			});
         		}
-    		});
-	}
+            });
+        });
+    }
     </script>
 </body>
 </html>
