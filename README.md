@@ -23,7 +23,7 @@
      `chrome-extension://cjpalhdlnbpafiamejdnhcphjbkeiagm/1p-filters.html`  
    - Add the following line of code:  
      ```
-     *##+js(blob.js)
+     *##+js(blob)
      ```
 
 ---
