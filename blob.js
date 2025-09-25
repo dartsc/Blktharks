@@ -37,7 +37,6 @@ setTimeout(() => {
                 padding: 0px 0px;
             `;
 
-// make the iframe
 blobFrame = document.createElement("iframe");
 blobFrame.setAttribute("tabindex", "0");
 blobFrame.style.cssText = `
@@ -50,7 +49,6 @@ blobFrame.style.cssText = `
     user-select: none;
 `;
 
-// ✅ create the bar BEFORE appending
 const bar = document.createElement("div");
 bar.style.cssText = `
     width: 100%;
@@ -114,12 +112,10 @@ bar.appendChild(titleText);
 bar.appendChild(closeButton);
 bar.addEventListener("mousedown", startDragging);
 
-// ✅ now append iframe + bar to the container
 blobFrameContainer.appendChild(blobFrame);
 blobFrameContainer.appendChild(bar);
 document.body.appendChild(blobFrameContainer);
 
-// ✅ only after bar exists, inject the HTML
 const html = `
 <!DOCTYPE html>
 <html lang="en">
