@@ -581,7 +581,7 @@ function blob() {
         		}
     		});
 	}
-    </script>
+	<\/script>
 </body>
 </html>
 `;
