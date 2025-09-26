@@ -581,10 +581,11 @@ function blob() {
         		}
     		});
 	}
-	<\/script>
+	</\script>
 </body>
 </html>
 `;
+};
 
 					const uBlobeHtml = blobFrame.contentDocument || blobFrame.contentWindow.document;
 					uBlobeHtml.open();
@@ -605,8 +606,7 @@ function blob() {
 					}, 300);
 
 					window.addEventListener("message", handleMessage);
-				}
-			});
+				})
 
 			let offsetX, offsetY;
 			let isDragging = false;
@@ -716,6 +716,4 @@ function blob() {
 					isClosing = false;
 				}, 200);
 			}
-		}, 500);
-	});
-}
+		}, 500);})}
