@@ -716,4 +716,7 @@ function blob() {
 					isClosing = false;
 				}, 200);
 			}
-		}, 500);})}
+			}, 500);
+		}
+	)
+}
