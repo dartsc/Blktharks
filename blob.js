@@ -605,7 +605,7 @@ function blob() {
 					}, 300);
 
 					window.addEventListener("message", handleMessage);
-				})
+				}
 
 			let offsetX, offsetY;
 			let isDragging = false;
@@ -714,8 +714,10 @@ function blob() {
 					element.remove();
 					isClosing = false;
 				}, 200);
-			}
-			}, 500);
+					}
+				}, 500);
+				}
+			)
 		}
 	)
 }
