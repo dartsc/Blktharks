@@ -581,11 +581,10 @@ function blob() {
         		}
     		});
 	}
-	</\script>
-</\body>
-</\html>
+	<\/script>
+<\/body>
+<\/html>
 `;
-};
 
 					const uBlobeHtml = blobFrame.contentDocument || blobFrame.contentWindow.document;
 					uBlobeHtml.open();
