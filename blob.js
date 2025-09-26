@@ -582,8 +582,8 @@ function blob() {
     		});
 	}
 	</\script>
-</body>
-</html>
+</\body>
+</\html>
 `;
 };
 
